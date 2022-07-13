@@ -17,7 +17,9 @@ func EnvironmentInit() {
 	// ที่อยู่ของ file config เริ่มค้นหาจาก root ด้านนอกสุด
 	viper.AddConfigPath(".")
 
+	// รับ env จากภายนอกได้ เช่นจาก docker file หรือ docker compose file
 	viper.AutomaticEnv()
+	// ทำการเปลี่ยน (.) ใน config.yaml เป็น (_) เพื่ออ้างการแก้ไข env จากภายนอก
 	viper.GetViper().SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
 	// เรียก file config.yaml มาใช้
